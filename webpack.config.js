@@ -1,16 +1,17 @@
-const path = require('path')
+const path = require('path');
 
-const webpack = require('webpack')
+const webpack = require('webpack');
 const {
   CleanWebpackPlugin
-} = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+} = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //BundleAnalyzerPlugin - Analise weight of libraries
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin
-const TerserPlugin = require('terser-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const srcVar = path.resolve(__dirname, 'src')
 const distVar = path.resolve(__dirname, 'dist')
@@ -20,14 +21,14 @@ const isDev = process.env.NODE_ENV === 'development'
 const filename = (ext) => {
   let filenameExt
   if (isDev) {
-    if ((ext === 'js') | (ext === 'css')) {
+    if ((ext === 'js') | (ext === 'css') | (ext === 'png') | (ext === 'jpg')) {
       filenameExt = `${ext}/[name].${ext}`
     } else {
       filenameExt = `[name].${ext}`
     }
   }
   if (!isDev) {
-    if ((ext === 'js') | (ext === 'css')) {
+    if ((ext === 'js') | (ext === 'css') | (ext === 'png') | (ext === 'jpg')) {
       filenameExt = `${ext}/[name].[contenthash].${ext}`
     } else {
       filenameExt = `[name].[contenthash].${ext}`
@@ -65,6 +66,30 @@ const optimization = () => {
     config.minimizer = [
       new TerserPlugin({
         parallel: true,
+      }),
+      new ImageMinimizerPlugin({
+        minimizerOptions: {
+          plugins: [
+            ['jpegtran', {
+              progressive: true,
+              optimizationLevel: 7
+            }],
+            ['optipng', {
+              optimizationLevel: 7
+            }],
+            [
+              'svgo',
+              {
+                plugins: [{
+                  removeViewBox: true,
+                }, ],
+              },
+            ],
+            ['imagemin-webp', {
+              optimizationLevel: 10
+            }],
+          ],
+        },
       }),
     ]
   }
