@@ -1,0 +1,76 @@
+@import '../../scss/mixins.scss';
+
+.js-slick li button {
+  display: none;
+}
+
+.js-slick .slick-dots li {
+  display: inline-block;
+  margin: 0 16px;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(231, 235, 240, 1);
+  }
+}
+
+.js-slick .slick-dots {
+  padding: 0;
+  display: table;
+  margin: 0 auto 60px auto;
+
+  & li {
+    text-align: center;
+  }
+}
+
+.js-slick .slick-dots li.slick-active {
+  &::after {
+    background-color: rgba(166, 171, 189, 1);
+  }
+}
+
+.slick-slider {
+  width: 288px;
+  margin: 0 auto;
+  outline: none;
+  border: 0;
+}
+
+.slick-slider .slick__item {
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+}
+
+.js-slick .slick-arrow {
+  position: absolute;
+  bottom: -2.5px;
+  font-size: 0;
+  border: none;
+  background-color: transparent;
+  width: 15px;
+  height: 20px;
+}
+
+.js-slick .slick-arrow.slick-prev {
+  left: 50px;
+  background: url('../../img/Vector.svg') no-repeat;
+}
+
+.js-slick .slick-arrow.slick-next {
+  right: 50px;
+  background: url('../../img/Vector.svg') no-repeat;
+  transform: rotate(180deg);
+}

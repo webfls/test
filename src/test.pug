@@ -4,9 +4,64 @@ block variables
   - var title = 'Test';
 
 block content
-  section
+  header.header
     .container
-
-
-
-block script
+      img.logo.logo__pos(src="./img/logo.png" alt="logo")
+  section.slider
+    .container
+      .slider__back
+        //- img.slider__img(src="./img/center-img.png" alt="center-img")
+      p.slider__title.title Lorem ipsum, dolor sit amet consectetur
+      .slider__slick.slick.js-slick
+        .slick__item
+          img.slick__icon(src="./img/82.svg" alt="icon1")
+          p.slick__text.text.text_16-18 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        .slick__item
+          img.slick__icon(src="./img/81.svg" alt="icon2")
+          p.slick__text.text.text_16-18 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        .slick__item
+          img.slick__icon(src="./img/83.svg" alt="icon3")
+          p.slick__text.text.text_16-18 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        .slick__item
+          img.slick__icon(src="./img/84.svg" alt="icon4")
+          p.slick__text.text.text_16-18 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+  section.content
+    .container
+      p.content__title.title.line.line_green Lorem ipsum, dolor sit amet consectetur  elit.
+      p.content__text.text.text_16-24 Porro ab rerum omnis magnam eligendi error nobis dolore?
+      ul.content__items
+        li.content__item.item
+          p.item__title.title.text_16-18 Lorem ipsum, dolor sit amet  adipisicing elit.
+          p.item__text.text.text_16-18 Laboriosam quas, aut consectetur animi autem aliquid consequuntur suscipit exercitationem laborum cupiditate magnam eaque quae delenit
+        li.content__item.item
+          p.item__title.title.text_16-18 Lorem ipsum, dolor sit amet  adipisicing elit.
+          p.item__text.text.text_16-18 Laboriosam quas, aut consectetur animi autem aliquid consequuntur suscipit exercitationem laborum cupiditate magnam eaque quae delenit
+        li.content__item.item
+          p.item__title.title.text_16-18 Lorem ipsum, dolor sit amet  adipisicing elit.
+          p.item__text.text.text_16-18 Laboriosam quas, aut consectetur animi autem aliquid consequuntur suscipit exercitationem laborum cupiditate magnam eaque quae delenit
+        li.content__item.item
+          p.item__title.title.text_16-18 Lorem ipsum, dolor sit amet  adipisicing elit.
+          p.item__text.text.text_16-18 Laboriosam quas, aut consectetur animi autem aliquid consequuntur suscipit exercitationem laborum cupiditate magnam eaque quae delenit
+        li.content__item.item
+          p.item__title.title.text_16-18 Lorem ipsum, dolor sit amet  adipisicing elit.
+          p.item__text.text.text_16-18 Laboriosam quas, aut consectetur animi autem aliquid consequuntur suscipit exercitationem laborum cupiditate magnam eaque quae delenit
+  section.feedback
+    .container
+      .feedback__title.title.line.line_green Lorem ipsum, dolor sit amet consectetur  elit.
+      .feedback__block.feedback__block_shadow
+        .row
+          .feedback__quotes
+          img.feedback__avatar(src="./img/avatar.png" alt="avatar")
+          .feedback__quotes.feedback__quotes_rotate
+        p.feedback__text.feedback__text_shadow.text.text_16-24 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam quas, aut consectetur  animi  autem aliquid consequuntur suscipit exercitationem laborum cupiditate magnam eaque quae deleniti, iste nisi expedita, provident excepturi officia! Porro ab rerum omnis magnam eligendi error nobis dolore? Porro ab rerum omnis magnam eligendi error nobis dolore? Porro ab rerum omnis magnam eligendi error nobis dolore?
+        p.feedback__signature.feedback__signature_shadow.title.text_16-24 Jane Doe
+      .feedback__block
+        img.feedback__avatar.feedback__avatar_small(src="./img/avatar.png" alt="avatar")
+        .feedback__block-content
+          p.feedback__text.text.text_16-24 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam quas, aut consect etur animi autem aliquid
+          p.feedback__signature.title.text_16-24 Jane Doe
+      .feedback__block
+        .feedback__block-content
+          p.feedback__text.text.text_16-24 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam quas, aut consect etur animi autem aliquid
+          p.feedback__signature.title.text_16-24 Jane Doe
+        img.feedback__avatar.feedback__avatar_small.feedback__avatar_right(src="./img/avatar.png" alt="avatar")

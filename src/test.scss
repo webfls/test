@@ -1,10 +1,298 @@
 @import './fonts/fonts.css';
+@import './scss/mixins.scss';
+
+
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  padding: 0;
+}
+
+button:active,
+button:focus {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
 
 body {
-  background: #E5E5E5;
+  background: rgba(255, 251, 255, 1);
   min-width: 320px;
 }
 
 .container {
   padding: 0 16px;
+  width: 288px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: block;
+  margin: 11px auto;
+}
+
+.slider {
+
+  &__back {
+    margin: 64px auto 38px auto;
+    width: 218px;
+    height: 115px;
+    background: url('./img/center-img.png');
+    background-size: cover;
+    filter: drop-shadow(0px 40px 80px rgba(0, 0, 0, 0.16));
+  }
+
+  &__title {
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+}
+
+.slick {
+
+  &__icon {
+    margin: 0 auto 27px auto;
+  }
+
+  &__text {
+    padding: 0 58px 0 54px;
+    margin-bottom: 63px;
+  }
+}
+
+.title {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28.13px;
+  text-align: center;
+  color: #2E3A59;
+}
+
+.text {
+  font-family: 'Roboto';
+  font-weight: 400;
+  color: #2E3A59;
+
+  &_16-18 {
+    font-size: 16px;
+    line-height: 18.75px;
+    text-align: center;
+  }
+
+  &_16-24 {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+
+.content {
+  background-color: rgba(248, 251, 255, 1);
+  padding: 60px 0 9px 0;
+
+  &__title {
+    padding: 0 23px 28px;
+    position: relative;
+  }
+
+  &__text {
+    margin-bottom: 31px;
+  }
+
+  &__item {
+    list-style-type: none;
+    position: relative;
+    margin-bottom: 16px;
+
+    &:nth-child(2) {
+      padding-bottom: 16px;
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      display: block;
+      content: " ";
+      background: url('./img/Vector.svg') no-repeat;
+      width: 10.5px;
+      height: 19px;
+      transform: rotate(-90deg);
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      display: block;
+      content: " ";
+      width: 288px;
+      height: 1px;
+      background-color: rgba(231, 235, 240, 1);
+    }
+
+    &:hover {
+      .item__title {
+        color: rgba(0, 195, 104, 1);
+      }
+
+      .item__text {
+        display: block;
+        text-align: left;
+      }
+
+      &::before {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+.line {
+  &::after {
+    position: absolute;
+    top: -16px;
+    left: calc(50% - 92px);
+    content: '';
+    display: block;
+    width: 184px;
+    height: 4px;
+  }
+
+  &_green {
+    &::after {
+      background-color: rgba(0, 195, 104, 1);
+    }
+  }
+}
+
+.item {
+  &__title {
+    text-align: left;
+    padding-right: 10px;
+    position: relative;
+    z-index: 10;
+    width: 250px;
+  }
+
+  &__text {
+    display: none;
+    padding-top: 19px;
+    position: relative;
+    z-index: 10;
+    width: 250px;
+  }
+}
+
+.feedback {
+  padding: 67px 0 0 0;
+
+  &__title {
+    padding: 0 23px 28px;
+    margin-bottom: 44px;
+    position: relative;
+  }
+
+  &__block {
+    position: relative;
+
+    &:nth-of-type(2) {
+      margin-bottom: 35px;
+    }
+
+    &:nth-of-type(3) {
+      margin-bottom: 26px;
+    }
+
+    &:nth-of-type(4) {
+      margin-bottom: 36px;
+    }
+
+    &_shadow {
+      box-shadow: 0px 8px 16px rgba(0, 195, 104, 0.24);
+      border-radius: 32px;
+      padding: 24px 16px 15px;
+    }
+  }
+
+  &__quotes {
+    display: inline-block;
+    width: 40px;
+    height: 26px;
+    background: url('./img/quotes.svg') no-repeat;
+    margin-bottom: 30px;
+
+
+    &_rotate {
+      transform: rotate(180deg);
+      float: right;
+    }
+  }
+
+  &__avatar {
+    width: 97px;
+    height: 97px;
+    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.5));
+    display: inline-block;
+    position: absolute;
+    top: calc(-97px / 2);
+    left: calc(50% - 97px / 2);
+    ;
+    border-radius: 100px;
+
+    &_small {
+      position: static;
+      vertical-align: top;
+      width: 59px;
+      height: 59px;
+      margin: 0 15px 0 10px;
+    }
+
+    &_right {
+      left: calc(100%);
+      margin: 0 0 0 23px;
+    }
+  }
+
+  &__block-content {
+    display: inline-block;
+    width: 196px;
+  }
+
+  &__text {
+    margin-bottom: 26px;
+    text-align: left;
+
+    &_shadow {
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+  }
+
+  &__signature {
+    text-align: left;
+
+    &_shadow {
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+  }
 }
