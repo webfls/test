@@ -6,7 +6,11 @@
 
 .js-slick .slick-dots li {
   display: inline-block;
-  margin: 0 16px;
+  margin: 0 16px 0 0;
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &::after {
     content: "";
@@ -65,12 +69,12 @@
 }
 
 .js-slick .slick-arrow.slick-prev {
-  left: 50px;
+  left: 65.5px;
   background: url('../../img/Vector.svg') no-repeat;
 }
 
 .js-slick .slick-arrow.slick-next {
-  right: 50px;
+  right: 65.5px;
   background: url('../../img/Vector.svg') no-repeat;
   transform: rotate(180deg);
 }
