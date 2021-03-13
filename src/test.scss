@@ -47,7 +47,7 @@ body {
     margin: 0 auto;
     width: 218px;
     height: 115px;
-    background: url('./img/center-img.png');
+    background-image: url('./img/center-img.png');
     background-size: cover;
     // filter: drop-shadow(0px 40px 80px rgba(0, 0, 0, 0.16));
     // box-shadow: 0 40px 80px 0px rgba(0, 0, 0, 0.16);
@@ -77,6 +77,7 @@ body {
 
   &__icon {
     margin: 0 auto 27px auto;
+    filter: drop-shadow(4px 4px 8px #A6ABBD);
   }
 
   &__text {
@@ -214,6 +215,10 @@ body {
     z-index: 10;
     width: 250px;
   }
+
+  &__icon {
+    display: none;
+  }
 }
 
 .feedback {
@@ -251,13 +256,17 @@ body {
     display: inline-block;
     width: 40px;
     height: 26px;
-    background: url('./img/quotes.svg') no-repeat;
     margin-bottom: 30px;
+    fill: #E7EBF0;
 
 
     &_rotate {
       transform: rotate(180deg);
       float: right;
+    }
+
+    &_green {
+      display: none;
     }
   }
 
