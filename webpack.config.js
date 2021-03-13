@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 
 const webpack = require('webpack');
@@ -7,9 +9,9 @@ const {
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-//BundleAnalyzerPlugin - Analise weight of libraries
+// BundleAnalyzerPlugin - Analise weight of libraries
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-//   .BundleAnalyzerPlugin
+// .BundleAnalyzerPlugin
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
@@ -21,14 +23,14 @@ const isDev = process.env.NODE_ENV === 'development'
 const filename = (ext) => {
   let filenameExt
   if (isDev) {
-    if ((ext === 'js') | (ext === 'css') | (ext === 'png') | (ext === 'jpg')) {
+    if ((ext === 'js') | (ext === 'css')) {
       filenameExt = `${ext}/[name].${ext}`
     } else {
       filenameExt = `[name].${ext}`
     }
   }
   if (!isDev) {
-    if ((ext === 'js') | (ext === 'css') | (ext === 'png') | (ext === 'jpg')) {
+    if ((ext === 'js') | (ext === 'css')) {
       filenameExt = `${ext}/[name].[contenthash].${ext}`
     } else {
       filenameExt = `[name].[contenthash].${ext}`
@@ -67,30 +69,30 @@ const optimization = () => {
       new TerserPlugin({
         parallel: true,
       }),
-      new ImageMinimizerPlugin({
-        minimizerOptions: {
-          plugins: [
-            ['jpegtran', {
-              progressive: true,
-              optimizationLevel: 7
-            }],
-            ['optipng', {
-              optimizationLevel: 7
-            }],
-            [
-              'svgo',
-              {
-                plugins: [{
-                  removeViewBox: true,
-                }, ],
-              },
-            ],
-            ['imagemin-webp', {
-              optimizationLevel: 10
-            }],
-          ],
-        },
-      }),
+      // new ImageMinimizerPlugin({
+      //   minimizerOptions: {
+      //     plugins: [
+      //       ['jpegtran', {
+      //         progressive: true,
+      //         optimizationLevel: 7
+      //       }],
+      //       ['optipng', {
+      //         optimizationLevel: 7
+      //       }],
+      //       [
+      //         'svgo',
+      //         {
+      //           plugins: [{
+      //             removeViewBox: true,
+      //           }, ],
+      //         },
+      //       ],
+      //       ['imagemin-webp', {
+      //         optimizationLevel: 10
+      //       }],
+      //     ],
+      //   },
+      // }),
     ]
   }
   return config
@@ -123,21 +125,15 @@ const allPlugins = () => {
 
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
+    // } else {
+    // plugins.push(new BundleAnalyzerPlugin())
   }
-  // else {
-  //   plugins.push(new BundleAnalyzerPlugin())
-  // }
   return plugins
 }
 
 const jsLoaders = () => {
-  const loaders = [{
-    loader: 'babel-loader',
-    options: {
-      presets: ['@babel/preset-env'],
-      plugins: ['@babel/plugin-proposal-class-properties'],
-    },
-  }, ]
+  // let loaders
+  const loaders = []
   if (isDev) {
     loaders.push('eslint-loader')
   }
@@ -145,27 +141,20 @@ const jsLoaders = () => {
 }
 
 module.exports = {
-
   mode: !isDev ? 'production' : 'development',
   devtool: !isDev ? false : 'inline-source-map',
   context: srcVar,
-
   entry: {
-
     testPage: [
-      '@babel/polyfill',
       './test.js',
     ],
   },
-
   output: {
     path: distVar,
     filename: filename('js'),
     publicPath: './',
   },
-
   devServer: devServer(),
-
   optimization: optimization(),
   stats: {
     logging: 'warn',
@@ -179,9 +168,7 @@ module.exports = {
     errorStack: true,
     timings: true,
   },
-
   plugins: allPlugins(),
-
   module: {
     rules: [{
         test: /\.m?js$/,
@@ -208,7 +195,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
         use: {
           loader: 'file-loader',
           options: {

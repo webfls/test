@@ -1,9 +1,10 @@
+$(document).ready(function () {
   $('.js-slick').slick({
-    infinite: false,
+    infinite: true,
     slidesToShow: 6,
     slidesToScroll: 1,
-    dots: false,
-    arrows: false,
+    dots: true,
+    arrows: true,
 
     responsive: [{
       breakpoint: 1920,
@@ -19,3 +20,4 @@
       }
     }]
   });
+});
